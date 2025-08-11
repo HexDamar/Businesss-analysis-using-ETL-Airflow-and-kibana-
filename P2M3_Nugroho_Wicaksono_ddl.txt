@@ -1,0 +1,77 @@
+-- URL Dataset:
+-- https://www.kaggle.com/datasets/elvinrustam/ebay-laptops-and-netbooks-sales?select=EbayPcLaptopsAndNetbooksClean.csv
+
+-- DDL: Membuat tabel table_m3
+CREATE TABLE table_m3 (
+    "id" SERIAL PRIMARY KEY,
+    "Brand" TEXT,
+    "Price" FLOAT,
+    "Currency" TEXT,
+    "Color" TEXT,
+    "Features" TEXT,
+    "Condition" TEXT,
+    "Condition Description" TEXT,
+    "Seller Note" TEXT,
+    "GPU" TEXT,
+    "Processor" TEXT,
+    "Processor Speed" TEXT,
+    "Processor Speed Unit" TEXT,
+    "Type" TEXT,
+    "Width of the Display" FLOAT,
+    "Height of the Display" FLOAT,
+    "OS" TEXT,
+    "Storage Type" TEXT,
+    "Hard Drive Capacity" FLOAT,
+    "Hard Drive Capacity Unit" TEXT,
+    "SSD Capacity" FLOAT,
+    "SSD Capacity Unit" TEXT,
+    "Screen Size (inch)" TEXT,
+    "Ram Size" FLOAT,
+    "Ram Size Unit" TEXT
+);
+
+-- DML: Mengisi data ke table_m3 menggunakan COPY
+COPY table_m3(
+    "Brand", "Price", "Currency", "Color", "Features", "Condition", "Condition Description",
+    "Seller Note", "GPU", "Processor", "Processor Speed", "Processor Speed Unit", "Type",
+    "Width of the Display", "Height of the Display", "OS", "Storage Type",
+    "Hard Drive Capacity", "Hard Drive Capacity Unit", "SSD Capacity", "SSD Capacity Unit",
+    "Screen Size (inch)", "Ram Size", "Ram Size Unit"
+)
+FROM '/temp/P2M3_damar_data_raw.csv'
+DELIMITER ','
+CSV HEADER;
+
+
+# Explanation
+
+1. pertama, buat table baru ( table m3) yang berisi
+    "id" SERIAL PRIMARY KEY,
+    "Brand" TEXT,
+    "Price" FLOAT,
+    "Currency" TEXT,
+    "Color" TEXT,
+    "Features" TEXT,
+    "Condition" TEXT,
+    "Condition Description" TEXT,
+    "Seller Note" TEXT,
+    "GPU" TEXT,
+    "Processor" TEXT,
+    "Processor Speed" TEXT,
+    "Processor Speed Unit" TEXT,
+    "Type" TEXT,
+    "Width of the Display" FLOAT,
+    "Height of the Display" FLOAT,
+    "OS" TEXT,
+    "Storage Type" TEXT,
+    "Hard Drive Capacity" FLOAT,
+    "Hard Drive Capacity Unit" TEXT,
+    "SSD Capacity" FLOAT,
+    "SSD Capacity Unit" TEXT,
+    "Screen Size (inch)" TEXT,
+    "Ram Size" FLOAT,
+    "Ram Size Unit" TEXT
+
+2. kedua masukkan baris isi raw data yang kita miliki yang kita pindah ke  temporary (tmp) file kedalam table m3 yang barusan kita buat
+
+3. run sql query untuk mengambil data dan memasukkannya kedalam table
